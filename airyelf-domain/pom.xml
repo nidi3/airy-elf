@@ -10,20 +10,28 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>airyelf-web</artifactId>
+    <artifactId>airyelf-domain</artifactId>
     <name>${project.artifactId}</name>
-    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>org.airyelf</groupId>
-            <artifactId>airyelf-domain</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
         </dependency>
 
     </dependencies>
+
 </project>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:component-scan base-package="org.airyelf.repository"/>
+
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+    <!-- *** Data Source *** -->
+    <!-- Change the initialPoolSize and maxPoolSize for reallife environments -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+        <property name="jdbcUrl" value="jdbc:derby:memory:airyelf;create=true"/>
+        <property name="idleConnectionTestPeriod" value="1"/>
+        <property name="user" value="sa"/>
+        <property name="password" value=""/>
+        <property name="initialPoolSize" value="1"/>
+        <property name="maxPoolSize" value="1"/>
+        <property name="minPoolSize" value="1"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="acquireRetryDelay" value="1000"/>
+        <property name="acquireRetryAttempts" value="60"/>
+        <property name="breakAfterAcquireFailure" value="false"/>
+    </bean>
+
+    <!-- *** JPA Entity Manager Factory *** -->
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="eclipselink.weaving">false</prop>
+                <prop key="eclipselink.logging.logger">org.airyelf.Slf4jLogger</prop>
+            </props>
+        </property>
+        <property name="jpaVendorAdapter">
+            <bean
+                    class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                <property name="databasePlatform" value="DERBY"/>
+                <property name="generateDdl" value="true"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- *** Transaction Manager *** -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+</beans>
