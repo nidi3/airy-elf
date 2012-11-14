@@ -61,6 +61,7 @@ import org.slf4j.LoggerFactory;
  * @since 1.0.0
  */
 public class Slf4jLogger extends AbstractSessionLog {
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private enum SLF4JLevel {
         TRACE, DEBUG, INFO, WARN, ERROR
@@ -241,11 +242,10 @@ public class Slf4jLogger extends AbstractSessionLog {
 
     @Override
     public void setLevel(int level, String category) {
-        throw new UnsupportedOperationException(
-                "Setting the loglevel is not supported. Do not set the 'showSql' attribute "
-                        + "of EclipseLinkJpaVendorAdapter and do not specify an "
-                        + "'eclipselink.logging.level' persistence unit property. "
-                        + "Simply use your logger implementation (e. g. log4j) to set the loglevel.");
+        log.warn("Setting the loglevel is not supported. Do not set the 'showSql' attribute "
+                + "of EclipseLinkJpaVendorAdapter and do not specify an "
+                + "'eclipselink.logging.level' persistence unit property. "
+                + "Simply use your logger implementation (e. g. log4j) to set the loglevel.");
     }
 
     @Override

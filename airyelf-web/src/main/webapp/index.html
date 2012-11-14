@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="airyelf">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body ng-controller="Main">
+<ul>
+    <li ng-repeat="def in portletDefinitions"><a href="{{urlOf(def)}}">{{def.name}}</a></li>
+</ul>
+
+<script type="text/javascript" src="lib/angular/angular-1.0.2.js"></script>
+<script type="text/javascript" src="lib/angular/angular-resource-1.0.2.js"></script>
+<script type="text/javascript" src="js/airyelf.js"></script>
+
+</body>
+</html>

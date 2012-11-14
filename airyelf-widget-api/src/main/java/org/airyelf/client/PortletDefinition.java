@@ -1,4 +1,4 @@
-package org.airyelf.portlet;
+package org.airyelf.client;
 
 /**
  *
@@ -7,26 +7,13 @@ public class PortletDefinition {
     private String groupId;
     private String artifactId;
     private String version;
-    private String url;
     private String name;
 
-    public PortletDefinition() {
-    }
-
-    public PortletDefinition(String groupId, String artifactId, String version, String url, String name) {
+    public PortletDefinition(String groupId, String artifactId, String version, String name) {
         this.groupId = groupId;
         this.artifactId = artifactId;
         this.version = version;
-        this.url = url;
         this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public String getGroupId() {
@@ -89,7 +76,6 @@ public class PortletDefinition {
                 "groupId='" + groupId + '\'' +
                 ", artifactId='" + artifactId + '\'' +
                 ", version='" + version + '\'' +
-                ", url='" + url + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

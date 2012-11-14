@@ -19,10 +19,23 @@
             <groupId>org.airyelf</groupId>
             <artifactId>airyelf-domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.airyelf</groupId>
+            <artifactId>airyelf-persistence</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
         </dependency>
 
     </dependencies>

@@ -8,4 +8,5 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <import resource="classpath:org/airyelf/domain-config.xml"/>
+    <import resource="classpath:org/airyelf/persistence-config.xml"/>
 </beans>
