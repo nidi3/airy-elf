@@ -13,6 +13,18 @@
                     <constructor-arg name="version" value="0.0.1"/>
                     <constructor-arg name="name" value="Hello Airy Elf"/>
                 </bean>
+                <bean class="org.airyelf.client.PortletDefinition">
+                    <constructor-arg name="groupId" value="org.airyelf.widget.core"/>
+                    <constructor-arg name="artifactId" value="time"/>
+                    <constructor-arg name="version" value="0.0.1"/>
+                    <constructor-arg name="name" value="Time"/>
+                </bean>
+                <bean class="org.airyelf.client.PortletDefinition">
+                    <constructor-arg name="groupId" value="org.airyelf.widget.core"/>
+                    <constructor-arg name="artifactId" value="echo"/>
+                    <constructor-arg name="version" value="0.0.1"/>
+                    <constructor-arg name="name" value="Echo"/>
+                </bean>
             </list>
         </property>
     </bean>

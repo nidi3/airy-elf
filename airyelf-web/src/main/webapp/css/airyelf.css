@@ -1,0 +1,21 @@
+div.widget {
+    border: 1px solid black;
+    background-color: #fff;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+ul.widgetContainer{
+    background-color: #eee;
+    min-height: 3em;
+}
+
+ul.widgetContainer>li {
+    list-style-type: none;
+}
+
+.placeholder {
+    height: 3em;
+    background-color: #ddd;
+    border: 3px dashed black;
+}

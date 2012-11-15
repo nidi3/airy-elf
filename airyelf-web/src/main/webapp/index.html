@@ -3,16 +3,143 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/airyelf.css" rel="stylesheet" media="screen">
 </head>
 
 <body ng-controller="Main">
-<ul>
-    <li ng-repeat="def in portletDefinitions"><a href="{{urlOf(def)}}">{{def.name}}</a></li>
-</ul>
 
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">Airy Elf</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Widget <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="def in portletDefinitions"><a href="{{urlOf(def)}}">{{def.name}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form pull-right">
+                    <input class="span2" type="text" placeholder="Email">
+                    <input class="span2" type="password" placeholder="Password">
+                    <button type="submit" class="btn">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="hero-unit">
+        <h1>Hello, Airy Elf!</h1>
+
+        <p>This is dummy Text just to show a three column layout. </p>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <ul class="widgetContainer" id="column1">
+                <li ng-repeat="widget in widgets['column1']">
+                    <div class="widget">
+                        <h3>{{widget.name}}</h3>
+
+                        <div widget="widget"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="widget">
+                        <h3>Heading</h3>
+
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
+                            euismod. Donec sed odio dui. </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="widget">
+
+                        <h3>Blablubli</h3>
+
+                        <p>ollis euismod. Donec sed odio dui. </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="widget">
+
+                        <h3>Number 3</h3>
+
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
+                            tortor
+                            mauris
+                            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+                            mollis
+                            euismod. Donec sed odio dui. </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="span4">
+            <ul class="widgetContainer">
+                <li>
+                    <div class="widget">
+                        <h3>Column2</h3>
+
+                        <p>dsfjhf df hjöh fdökhdf ksdfh </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="widget">
+                        <h3>Column2 again</h3>
+
+                        <p>dsfjhf df hjöhdfdskldjf slsdkh ldhl fdökhdf ksdfh </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="span4">
+            <ul class="widgetContainer">
+                <li>
+                    <div class="widget">
+                        <h3>Last&least</h3>
+
+                        <p>dfljhdfs ljhdfkj hdfskdsh dls hl</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Stefan Niederhauser 2012</p>
+    </footer>
+
+</div>
+
+<script type="text/javascript" src="lib/jquery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui/jquery-ui-1.9.1.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="lib/angular/angular-1.0.2.js"></script>
 <script type="text/javascript" src="lib/angular/angular-resource-1.0.2.js"></script>
 <script type="text/javascript" src="js/airyelf.js"></script>
-
+<script>
+    $(function () {
+        $('.widgetContainer').sortable({
+            connectWith: '.widgetContainer',
+            placeholder: 'placeholder',
+            helper: function (event, elem) {
+                return '<h3>' + elem.find('h3').text() + '</h3>';
+            }
+        });
+        $('.widgetContainer').disableSelection();
+    })
+</script>
 </body>
 </html>
