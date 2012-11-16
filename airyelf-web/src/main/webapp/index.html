@@ -44,46 +44,19 @@
         <p>This is dummy Text just to show a three column layout. </p>
     </div>
     <div class="row">
-        <div class="span4">
-            <ul class="widgetContainer" id="column1">
-                <li ng-repeat="widget in widgets['column1']">
-                    <div class="widget">
-                        <h3>{{widget.name}}</h3>
-
-                        <div widget="widget"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="widget">
-                        <h3>Heading</h3>
-
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                            euismod. Donec sed odio dui. </p>
-                    </div>
-                </li>
-            </ul>
+        <div class="span3">
+            <div widget-container id="column1"></div>
         </div>
-        <div class="span4">
-            <ul class="widgetContainer">
-                <li>
-                    <div class="widget">
-                        <h3>Column2</h3>
-
-                        <p>dsfjhf df hjöh fdökhdf ksdfh </p>
-                    </div>
-                </li>
-            </ul>
+        <div class="span6">
+            <div widget-container id="column2"></div>
         </div>
-        <div class="span4">
-            <ul class="widgetContainer">
-                <li>
-                    <div class="widget">
-                        <h3>Last&least</h3>
-
-                        <p>dfljhdfs ljhdfkj hdfskdsh dls hl</p>
-                    </div>
-                </li>
-            </ul>
+        <div class="span3">
+            <div widget-container id="column3"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div widget-container id="footer"></div>
         </div>
     </div>
 
@@ -92,7 +65,7 @@
     <footer>
         <p>&copy; Stefan Niederhauser 2012</p>
     </footer>
-
+{{page.widgets}}
 </div>
 
 <script type="text/javascript" src="lib/jquery/jquery-1.8.2.js"></script>
@@ -101,20 +74,5 @@
 <script type="text/javascript" src="lib/angular/angular-1.0.2.js"></script>
 <script type="text/javascript" src="lib/angular/angular-resource-1.0.2.js"></script>
 <script type="text/javascript" src="js/airyelf.js"></script>
-<script>
-    $(function () {
-        $('.widgetContainer').sortable({
-            connectWith: '.widgetContainer',
-            placeholder: 'placeholder',
-            helper: function (event, elem) {
-                return '<h3>' + elem.find('h3').text() + '</h3>';
-            },
-            receive: function (event, ui) {
-                console.log(ui);
-            }
-        });
-        $('.widgetContainer').disableSelection();
-    })
-</script>
 </body>
 </html>

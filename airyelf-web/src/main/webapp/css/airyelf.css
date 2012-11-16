@@ -6,8 +6,7 @@ div.widget {
 }
 
 ul.widgetContainer{
-    background-color: #eee;
-    min-height: 3em;
+    min-height: 200px;
 }
 
 ul.widgetContainer>li {
@@ -18,4 +17,6 @@ ul.widgetContainer>li {
     height: 3em;
     background-color: #ddd;
     border: 3px dashed black;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
