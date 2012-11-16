@@ -32,9 +32,15 @@
                             loading = 0,
                             finishIfAllScriptsLoaded = function () {
                                 if (loading === 0) {
-                                    var node = $(result);
-                                    node.appendTo(element);
-                                    angular.bootstrap(node, [moduleName]);
+                                    var node = $(result).appendTo(element),
+                                        injector = angular.bootstrap(node, [moduleName]),
+                                        rootScope = injector.get('$rootScope');
+
+                                    modules[moduleName] = rootScope;
+                                    rootScope.$emit('airyelf.init', {
+                                        modules: modules,
+                                        serverUrl: def.url
+                                    });
                                 }
                             },
                             loadScript = function (url) {

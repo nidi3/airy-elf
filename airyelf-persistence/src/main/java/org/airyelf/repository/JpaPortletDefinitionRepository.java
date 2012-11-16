@@ -61,7 +61,9 @@ public class JpaPortletDefinitionRepository extends JpaBaseRepository<PortletDef
 
     @Override
     public void store(PortletDefinition portletDefinition) {
-        super.store(mapDomain(portletDefinition));
+        if (findByGav(portletDefinition.getGroupId(), portletDefinition.getArtifactId(), portletDefinition.getVersion()).isEmpty()) {
+            super.store(mapDomain(portletDefinition));
+        }
     }
 
     @Override
