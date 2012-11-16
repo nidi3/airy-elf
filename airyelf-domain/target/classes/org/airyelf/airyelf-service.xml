@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean     id="org.h2.tools.Server"
+              class="org.h2.tools.Server"
+              scope="singleton"
+              factory-method="createTcpServer"
+              init-method="start"
+              depends-on="org.h2.tools.Server-WebServer">
+        <constructor-arg value="-tcp,-tcpAllowOthers,true,-tcpPort,9092"/>
+    </bean>
+    <bean     id="org.h2.tools.Server-WebServer"
+              class="org.h2.tools.Server"
+              scope="singleton"
+              factory-method="createWebServer"
+              init-method="start">
+        <constructor-arg value="-web,-webAllowOthers,true,-webPort,8082"/>
+    </bean>
+    <bean id="H2DatabaseJDBCDriver" class="org.h2.Driver"
+          scope="singleton" init-method="load" depends-on="org.h2.tools.Server" />
+
+    <bean id="H2InMemoryDB"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          depends-on="org.h2.tools.Server">
+        <property name="driverClassName" value="org.h2.Driver" />
+        <property name="url" value="jdbc:h2:mem:appdb1;DB_CLOSE_DELAY=-1" />
+        <!-- ;TRACE_LEVEL_FILE=3;TRACE_LEVEL_SYSTEM_OUT=3 -->
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+</beans>
