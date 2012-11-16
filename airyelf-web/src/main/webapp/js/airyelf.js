@@ -5,12 +5,12 @@
     var module = angular.module('airyelf', ['ngResource']);
 
     module.controller('Main', ['$scope', '$resource', function (scope, resource) {
-        scope.portletDefinitions = resource('action/portlet-definition').query();
+        scope.widgetDefinitions = resource('action/widget-definition').query();
         scope.urlOf = function (def) {
             return def.url + '/' + def.groupId.replace(/\./g, '/') + '/' + def.artifactId + '/' + def.version + 'content.html';
         };
         scope.widgets = {
-            column1: scope.portletDefinitions
+            column1: scope.widgetDefinitions
         };
     }]);
 

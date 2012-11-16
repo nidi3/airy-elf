@@ -22,7 +22,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Widget <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li ng-repeat="def in portletDefinitions"><a href="{{urlOf(def)}}">{{def.name}}</a></li>
+                            <li ng-repeat="def in widgetDefinitions"><a href="{{urlOf(def)}}">{{def.name}}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -108,6 +108,9 @@
             placeholder: 'placeholder',
             helper: function (event, elem) {
                 return '<h3>' + elem.find('h3').text() + '</h3>';
+            },
+            receive: function (event, ui) {
+                console.log(ui);
             }
         });
         $('.widgetContainer').disableSelection();

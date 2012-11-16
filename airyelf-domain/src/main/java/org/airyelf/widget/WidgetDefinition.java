@@ -1,19 +1,32 @@
-package org.airyelf.client;
+package org.airyelf.widget;
 
 /**
  *
  */
-public class PortletDefinition {
+public class WidgetDefinition {
     private String groupId;
     private String artifactId;
     private String version;
+    private String url;
     private String name;
 
-    public PortletDefinition(String groupId, String artifactId, String version, String name) {
+    public WidgetDefinition() {
+    }
+
+    public WidgetDefinition(String groupId, String artifactId, String version, String url, String name) {
         this.groupId = groupId;
         this.artifactId = artifactId;
         this.version = version;
+        this.url = url;
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getGroupId() {
@@ -53,7 +66,7 @@ public class PortletDefinition {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PortletDefinition that = (PortletDefinition) o;
+        WidgetDefinition that = (WidgetDefinition) o;
 
         if (!artifactId.equals(that.artifactId)) return false;
         if (!groupId.equals(that.groupId)) return false;
@@ -72,10 +85,11 @@ public class PortletDefinition {
 
     @Override
     public String toString() {
-        return "PortletDefinition{" +
+        return "WidgetDefinition{" +
                 "groupId='" + groupId + '\'' +
                 ", artifactId='" + artifactId + '\'' +
                 ", version='" + version + '\'' +
+                ", url='" + url + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

@@ -17,7 +17,7 @@ import org.springframework.web.context.ServletContextAware;
 /**
  *
  */
-public class PortletRegisterer implements InitializingBean, DisposableBean, ServletContextAware {
+public class WidgetRegisterer implements InitializingBean, DisposableBean, ServletContextAware {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private static final int RETRY_INTERVAL_IN_SEC = 60000;
 
@@ -26,7 +26,7 @@ public class PortletRegisterer implements InitializingBean, DisposableBean, Serv
 
     private ServletContext servletContext;
 
-    private List<PortletDefinition> portletDefinitions;
+    private List<WidgetDefinition> widgetDefinitions;
 
     private boolean registered = false;
 
@@ -60,7 +60,7 @@ public class PortletRegisterer implements InitializingBean, DisposableBean, Serv
                     @Override
                     public void run() {
                         try {
-                            rest.postForObject(actionUrl(), portletDefinitions, String.class, encodeUrl(myUrl()));
+                            rest.postForObject(actionUrl(), widgetDefinitions, String.class, encodeUrl(myUrl()));
                             log.info("Registered widgets at '{}' on server at '{}'", myUrl(), serverUrl);
                             registered = true;
                             timer.cancel();
@@ -86,7 +86,7 @@ public class PortletRegisterer implements InitializingBean, DisposableBean, Serv
     }
 
     private String actionUrl() {
-        return serverUrl + "/action/portlet-definition/{url}";
+        return serverUrl + "/action/widget-definition/{url}";
     }
 
     public String getServerUrl() {
@@ -97,12 +97,12 @@ public class PortletRegisterer implements InitializingBean, DisposableBean, Serv
         this.serverUrl = serverUrl;
     }
 
-    public List<PortletDefinition> getPortletDefinitions() {
-        return portletDefinitions;
+    public List<WidgetDefinition> getWidgetDefinitions() {
+        return widgetDefinitions;
     }
 
-    public void setPortletDefinitions(List<PortletDefinition> portletDefinitions) {
-        this.portletDefinitions = portletDefinitions;
+    public void setWidgetDefinitions(List<WidgetDefinition> widgetDefinitions) {
+        this.widgetDefinitions = widgetDefinitions;
     }
 
     public boolean isRegistered() {

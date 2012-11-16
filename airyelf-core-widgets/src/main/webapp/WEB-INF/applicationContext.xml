@@ -4,22 +4,22 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-    <bean class="org.airyelf.client.PortletRegisterer">
-        <property name="portletDefinitions">
+    <bean class="org.airyelf.client.WidgetRegisterer">
+        <property name="widgetDefinitions">
             <list>
-                <bean class="org.airyelf.client.PortletDefinition">
+                <bean class="org.airyelf.client.WidgetDefinition">
                     <constructor-arg name="groupId" value="org.airyelf.widget.core"/>
                     <constructor-arg name="artifactId" value="hello-airy-elf"/>
                     <constructor-arg name="version" value="0.0.1"/>
                     <constructor-arg name="name" value="Hello Airy Elf"/>
                 </bean>
-                <bean class="org.airyelf.client.PortletDefinition">
+                <bean class="org.airyelf.client.WidgetDefinition">
                     <constructor-arg name="groupId" value="org.airyelf.widget.core"/>
                     <constructor-arg name="artifactId" value="time"/>
                     <constructor-arg name="version" value="0.0.1"/>
                     <constructor-arg name="name" value="Time"/>
                 </bean>
-                <bean class="org.airyelf.client.PortletDefinition">
+                <bean class="org.airyelf.client.WidgetDefinition">
                     <constructor-arg name="groupId" value="org.airyelf.widget.core"/>
                     <constructor-arg name="artifactId" value="echo"/>
                     <constructor-arg name="version" value="0.0.1"/>

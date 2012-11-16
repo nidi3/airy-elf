@@ -13,8 +13,8 @@ import javax.validation.constraints.NotNull;
  *
  */
 @Entity
-@Table(name = "PORTLET_DEFINITION")
-public class PortletDefinitionEntity {
+@Table(name = "WIDGET_DEFINITION")
+public class WidgetDefinitionEntity {
 
     @Id
     @Column(nullable = false)
@@ -42,11 +42,11 @@ public class PortletDefinitionEntity {
     @Column(nullable = false)
     private String name;
 
-    protected PortletDefinitionEntity() {
+    protected WidgetDefinitionEntity() {
         // For JPA
     }
 
-    public PortletDefinitionEntity(String groupId, String artifactId, String version, String url, String name) {
+    public WidgetDefinitionEntity(String groupId, String artifactId, String version, String url, String name) {
         this.groupId = groupId;
         this.artifactId = artifactId;
         this.version = version;
